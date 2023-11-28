@@ -1,21 +1,29 @@
 import java.util.*;
 
 public class Triangle {
-    int[] edges = new int[3];
-    Triangle(int e1,int e2,int e3){
-        this.edges[0] = e1;
-        this.edges[1] = e2;
-        this.edges[2] = e3;
-    }
-   public static boolean isValid() {
-       Queue<Integer> q = new PriorityQueue<>();
-        Scanner sc = new Scanner(System.in);
-        for(int i = 0; sc.hasNextLine() && i < 3;i++){
-             q.offer(sc.nextInt());
+   public static boolean isValid(int[] edges) {
+       // 异常处理
+        if(edges.length > 3){
+            throw new IllegalArgumentException("wrong edges");
         }
-       int e1 = (int)q.poll();
-        int e2 = (int) q.poll();
+        // 创建优先队列，将传入参数加入优先队列，获取最长边即为潜在的斜边（如果是直角三角形）
+        Queue<Integer> q = new PriorityQueue<>();
+        for(int i:edges){
+            q.offer(i);
+        }
+        int e1 = q.poll();
+        int e2 = q.poll();
         int hypo = q.poll();
-       return (e1*e1 + e2*e2 == hypo*hypo);
+        return (e1*e1 + e2*e2 == hypo*hypo);
    }
+
+   // unit test
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int[] edges = new int[3];
+        for(int i = 0; i < 3;i++){
+            edges[i] = sc.nextInt();
+        }
+        System.out.println(isValid(edges));
+    }
 }
