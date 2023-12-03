@@ -1,7 +1,7 @@
 import java.util.Scanner;
 
 public class CostCounter {
-    private static double cost(int dis, int wt){
+    public static double cost(int dis, int wt){
         double unitCost = 0;
         if(dis > 0 && dis < 100){
             unitCost = 1.0;
@@ -19,13 +19,5 @@ public class CostCounter {
             unitCost = 0.6;
         }
         return dis*wt*unitCost;
-    }
-
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        int dis = sc.nextInt();
-        int wt = sc.nextInt();
-        System.out.println(CostCounter.cost(dis,wt));
-        sc.close();
     }
 }

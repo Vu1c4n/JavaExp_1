@@ -11,19 +11,12 @@ public class Triangle {
         for(int i:edges){
             q.offer(i);
         }
-        int e1 = q.poll();
-        int e2 = q.poll();
-        int hypo = q.poll();
-        return (e1*e1 + e2*e2 == hypo*hypo);
+        Integer e1 = q.poll();
+        Integer e2 = q.poll();
+        Integer hypo = q.poll();
+        /*
+        修复"Unboxing of xxx may cause Nullptr..."提示
+         */
+        return (e1!=null&&e2!=null&&hypo!=null && e1*e1 + e2*e2 == hypo*hypo);
    }
-
-   // unit test
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        int[] edges = new int[3];
-        for(int i = 0; i < 3;i++){
-            edges[i] = sc.nextInt();
-        }
-        System.out.println(isValid(edges));
-    }
 }

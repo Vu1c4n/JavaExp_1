@@ -12,7 +12,7 @@ public class SumEven {
         int i = 1000;
         while(i > 0){
             if((i%2)==0){
-                sum += 1;
+                sum += i;
             }
             i -= 1;
         }
