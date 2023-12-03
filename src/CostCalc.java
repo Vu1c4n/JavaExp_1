@@ -1,6 +1,4 @@
-import java.util.Scanner;
-
-public class CostCounter {
+public class CostCalc {
     public static double cost(int dis, int wt){
         double unitCost = 0;
         if(dis > 0 && dis < 100){
